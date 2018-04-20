@@ -1,12 +1,11 @@
 <template>
-  <div class="counter">
-    <div class="count">Count: {{count}}</div>
-    <div class="count-btns">
-      <button type="button" class="btn btn-default" @click="countIncrement">increment</button>
-      <button type="button" class="btn btn-default" @click="countDecrement">decrement</button>
-    </div>
+  <div>
+    <h1>Story B</h1>
+    <p>this is some story content</p>
+    <router-link :to="{ name: 'home' }">Go home</router-link>
   </div>
 </template>
+
 <script>
   import { mapState, mapActions } from 'vuex'
 
@@ -20,7 +19,8 @@
     ])
   }
 </script>
-<style lang="scss" scoped>
+
+<!-- <style lang="scss" scoped>
   .count {
     margin: 1em 0;
   }
@@ -31,3 +31,4 @@
     }
   }
 </style>
+ -->

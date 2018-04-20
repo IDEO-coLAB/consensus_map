@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from './Home'
-import Counter from './Counter'
-import GeographicalIp from './GeographicalIp'
+import Home from '../pages/Home'
+import AAA from '../pages/AAA'
+import BBB from '../pages/BBB'
+
+// import GeographicalIp from './GeographicalIp'
 import NotFoundComponent from './NotFoundComponent'
 
 const routes = [
@@ -16,22 +18,30 @@ const routes = [
     }
   },
   {
-    name: 'counter',
-    path: '/counter',
-    component: Counter,
+    name: 'aaa',
+    path: '/aaa',
+    component: AAA,
     meta: {
-      title: 'Counter'
+      title: 'AAA'
     }
   },
   {
-    name: 'geographicalIp',
-    path: '/geographical-ip',
-    component: GeographicalIp,
+    name: 'bbb',
+    path: '/bbb',
+    component: BBB,
     meta: {
-      title: 'Geographical Ip',
-      keepAlive: false // set false to re-rendering component state
+      title: 'BBB'
     }
   },
+  // {
+  //   name: 'geographicalIp',
+  //   path: '/geographical-ip',
+  //   component: GeographicalIp,
+  //   meta: {
+  //     title: 'Geographical Ip',
+  //     keepAlive: false // set false to re-rendering component state
+  //   }
+  // },
   {
     name: 'notFound',
     path: '*',

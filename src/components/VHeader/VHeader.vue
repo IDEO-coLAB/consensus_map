@@ -2,11 +2,10 @@
   <div class="Header">
     <div class="Header-padding">
       <div class="text-center">
-        <router-link to="/" exact>Home</router-link>
-        <span> - </span>
-        <router-link :to="{name: 'counter'}">Counter</router-link>
-        <span> - </span>
-        <router-link :to="{name: 'geographicalIp'}">Geographical Ip</router-link>
+        some header
+        <!-- <router-link to="/" exact>Home</router-link> -->
+        <!-- <router-link :to="{name: 'counter'}">Counter</router-link> -->
+        <!-- <router-link :to="{name: 'geographicalIp'}">Geographical Ip</router-link> -->
       </div>
     </div>
   </div>
