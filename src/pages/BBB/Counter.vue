@@ -7,16 +7,21 @@
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
+  // import { mapState, mapActions } from 'vuex'
+  // import clearBreadcrumbs from '../../directives/clearBreadcrumbs'
+  import addBreadcrumb from '../../directives/addBreadcrumb'
 
   export default {
-    computed: mapState([
-      'count'
-    ]),
-    methods: mapActions([
-      'countIncrement',
-      'countDecrement'
-    ])
+    directives: {
+      addBreadcrumb
+    }
+    // computed: mapState([
+    //   'count'
+    // ]),
+    // methods: mapActions([
+    //   'countIncrement',
+    //   'countDecrement'
+    // ])
   }
 </script>
 
@@ -31,4 +36,4 @@
     }
   }
 </style>
- -->
+ -->’

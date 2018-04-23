@@ -1,5 +1,5 @@
 const state = {
-  count: 0
+  breadcrumbs: []
 }
 
 export default state

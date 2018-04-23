@@ -1,11 +1,14 @@
 import * as types from './mutation-types'
 
 const mutations = {
-  [types.COUNT_INCREMENT](state) {
-    state.count += 1
+  [types.ADD_BREADCRUMB](state, breadcrumb) {
+    state.breadcrumbs.unshift(breadcrumb)
   },
-  [types.COUNT_DECREMENT](state) {
-    state.count -= 1
+  [types.REMOVE_BREADCRUMB](state) {
+    state.breadcrumbs.shift()
+  },
+  [types.CLEAR_BREADCRUMBS](state) {
+    state.breadcrumbs = []
   }
 }
 
