@@ -1,23 +1,38 @@
 <template>
   <div>
-    <h1>Story B</h1>
-    <p>this is some story content</p>
+    <h1>Story BBB</h1>
+    <breadcrumb></breadcrumb>
+    <br>
     <router-link :to="{ name: 'home' }">Go home</router-link>
+    <br>
+    <router-link :to="{ name: 'aaa' }">Go to aaa</router-link>
+    <br>
+    <router-link :to="{ name: 'ccc' }">Go to ccc</router-link>
+    <br>
+    <br>
+    Breadcrumb: {{this.breadcrumbs}}
   </div>
 </template>
 
 <script>
-  // import { mapState, mapActions } from 'vuex'
+  import { mapState } from 'vuex'
   // import clearBreadcrumbs from '../../directives/clearBreadcrumbs'
+  import Breadcrumb from '../../components/Breadcrumb'
   import addBreadcrumb from '../../directives/addBreadcrumb'
 
   export default {
     directives: {
       addBreadcrumb
-    }
-    // computed: mapState([
-    //   'count'
-    // ]),
+    },
+    components: {
+      Breadcrumb
+    },
+    computed: mapState([
+      'breadcrumbs'
+    ])
+    // created () {
+    //   console.log(this.$store.getters)
+    // }
     // methods: mapActions([
     //   'countIncrement',
     //   'countDecrement'

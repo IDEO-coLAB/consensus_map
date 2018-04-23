@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home'
 import AAA from '../pages/AAA'
 import BBB from '../pages/BBB'
+import CCC from '../pages/CCC'
 
 // import GeographicalIp from './GeographicalIp'
 import NotFoundComponent from './NotFoundComponent'
@@ -22,7 +23,11 @@ const routes = [
     path: '/aaa',
     component: AAA,
     meta: {
-      title: 'AAA'
+      title: 'AAA',
+      breadcrumb: {
+        id: '234',
+        text: 'AAA: Basic depth aaa'
+      }
     }
   },
   {
@@ -30,18 +35,25 @@ const routes = [
     path: '/bbb',
     component: BBB,
     meta: {
-      title: 'BBB'
+      title: 'BBB',
+      breadcrumb: {
+        id: '345',
+        text: 'BBB: Deeper depth bbb'
+      }
     }
   },
-  // {
-  //   name: 'geographicalIp',
-  //   path: '/geographical-ip',
-  //   component: GeographicalIp,
-  //   meta: {
-  //     title: 'Geographical Ip',
-  //     keepAlive: false // set false to re-rendering component state
-  //   }
-  // },
+  {
+    name: 'ccc',
+    path: '/ccc',
+    component: CCC,
+    meta: {
+      title: 'CCC',
+      breadcrumb: {
+        id: '456',
+        text: 'CCC: Some other thing ccc'
+      }
+    }
+  },
   {
     name: 'notFound',
     path: '*',
@@ -59,7 +71,7 @@ const router = new VueRouter({
   mode: 'history'
 })
 
-router.afterEach(to => {
+router.afterEach((to, from) => {
   if (to.meta.title !== undefined) {
     document.title = `${to.meta.title} - Vue-vuex-starter-kit`
   }

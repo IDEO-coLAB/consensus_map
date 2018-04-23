@@ -1,16 +1,24 @@
 import Vue from 'vue'
+// import * as types from '../store/mutation-types'
 
 export default Vue.directive('addBreadcrumb', {
   bind: (el, binding, vnode) => {
-    const $router = vnode.context.$router
-    const $store = vnode.context.$store
-    const route = vnode.componentOptions.propsData
+    // const $router = vnode.context.$router
+    // const $store = vnode.context.$store
+    // const toRoute = vnode.componentOptions.propsData
 
-    console.log($store)
+    // const breadcrumbDirective = vnode.data.directives.filter((directive) => {
+    //   return directive.name === 'add-breadcrumb'
+    // })[0]
 
-    el.addEventListener('click', () => {
-      console.log('adding context!')
-      $router.push(route)
+    // console.log($router.currentRoute.name)
+
+    // const routeObj = $router.options.routes.filter((route) => {
+    //   return route.name === toRoute.name
+    // })[0]
+
+    el.addEventListener('click', (evt) => {
+      // $store.commit(types.ADD_BREADCRUMB, $router.currentRoute.meta.breadcrumb)
     })
   },
   unbind: (el) => {

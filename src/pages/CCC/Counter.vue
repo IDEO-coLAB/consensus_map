@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1>Story AAA</h1>
+    <h1>Story CCC</h1>
     <breadcrumb></breadcrumb>
     <br>
     <router-link :to="{ name: 'home' }">Go home</router-link>
     <br>
-    <router-link :to="{ name: 'bbb' }">Go to bbb</router-link>
+    <router-link :to="{ name: 'aaa' }">Go aaa</router-link>
     <br>
-    <router-link :to="{ name: 'ccc' }">Go to ccc</router-link>
+    <router-link :to="{ name: 'bbb' }">Go bbb</router-link>
     <br>
     <br>
-    Breadcrumb: {{this.breadcrumbs}}
+    <p>Breadcrumbs: {{this.breadcrumbs}}</p>
   </div>
 </template>
 
@@ -30,21 +30,5 @@
     computed: mapState([
       'breadcrumbs'
     ])
-    // data() {
-    //   return {
-    //     breadcrumb: {
-    //       description: 'some context',
-    //       level: 1
-    //     }
-    //   }
-    // }
-    // ,
-    // computed: mapState([
-    //   'count'
-    // ])
-    // methods: mapActions([
-    //   'countIncrement',
-    //   'countDecrement'
-    // ])
   }
 </script>

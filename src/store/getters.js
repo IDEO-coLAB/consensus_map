@@ -1,5 +1,5 @@
 const getters = {
-  getCount: state => state.count
+  breadcrumbs: state => state.breadcrumbs
 }
 
 export default getters
