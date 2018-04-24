@@ -1,6 +1,8 @@
 import Vue from 'vue'
 // import * as types from '../store/mutation-types'
 
+// TODO: REMOVE?
+
 export default Vue.directive('addBreadcrumb', {
   bind: (el, binding, vnode) => {
     // const $router = vnode.context.$router

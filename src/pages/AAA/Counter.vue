@@ -2,6 +2,8 @@
   <div>
     <h1>Story AAA</h1>
     <breadcrumb></breadcrumb>
+    <p>We are tracking {{networks.length}} networks in the ontology table</p>
+
     <br>
     <router-link :to="{ name: 'home' }">Go home</router-link>
     <br>
@@ -28,7 +30,8 @@
       Breadcrumb
     },
     computed: mapState([
-      'breadcrumbs'
+      'breadcrumbs',
+      'networks'
     ])
     // data() {
     //   return {

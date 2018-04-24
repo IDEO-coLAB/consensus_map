@@ -1,12 +1,22 @@
-// import * as types from './mutation-types'
+import axios from 'axios'
+
+import * as mutationTypes from './mutation-types'
+import * as actionTypes from './action-types'
+
+const KEY = 'keyNAq63kkfbTFZdE'
 
 const actions = {
-  // countIncrement({commit}) {
-  //   commit(types.COUNT_INCREMENT)
-  // },
-  // countDecrement({commit}) {
-  //   commit(types.COUNT_DECREMENT)
-  // }
+  [actionTypes.LOAD_NETWORKS]({ commit, state }) {
+    return axios.get(
+      'https://api.airtable.com/v0/appSXSYhMu8ZxHNsS/Networks',
+      {
+        headers: { Authorization: `Bearer ${KEY}` }
+      })
+      .then(response => {
+        commit(mutationTypes.SET_NETWORKS, response.data.records)
+      })
+      .catch(response => console.error('ERROR!!!', response))
+  }
 }
 
 export default actions

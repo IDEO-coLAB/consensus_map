@@ -1,0 +1,1 @@
+export const LOAD_NETWORKS = 'LOAD_NETWORKS'

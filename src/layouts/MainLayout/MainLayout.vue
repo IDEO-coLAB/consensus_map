@@ -26,7 +26,8 @@
 
   // import VHeader from '@/components/VHeader'
   import { mapState } from 'vuex'
-  import * as types from '../../store/mutation-types'
+  import * as mutationTypes from '../../store/mutation-types'
+  import * as actionTypes from '../../store/action-types'
   import VHeader from '../../components/VHeader'
 
   export default {
@@ -39,6 +40,8 @@
       'breadcrumbs'
     ]),
     mounted() {
+      this.$store.dispatch(actionTypes.LOAD_NETWORKS)
+
       this.$router.afterEach((to, from) => {
         const prevBreadcrumb = _.head(this.breadcrumbs)
         const startBreadcrumb = _.last(this.breadcrumbs)
@@ -49,13 +52,13 @@
         // TOC wipes breadcrumbs
         // TODO: handle more cleanly
         if (!fromBreadcrumb || !toBreadcrumb) {
-          this.$store.commit(types.CLEAR_BREADCRUMBS)
+          this.$store.commit(mutationTypes.CLEAR_BREADCRUMBS)
           return
         }
 
         // If there is no previous breadcrumb, add it
         if (_.isNil(prevBreadcrumb)) {
-          this.$store.commit(types.ADD_BREADCRUMB, fromBreadcrumb)
+          this.$store.commit(mutationTypes.ADD_BREADCRUMB, fromBreadcrumb)
           return
         }
 
@@ -64,7 +67,7 @@
         const toWasPrev = prevBreadcrumb &&
           prevBreadcrumb.id === toBreadcrumb.id
         if (toWasPrev) {
-          this.$store.commit(types.REMOVE_BREADCRUMB, toBreadcrumb)
+          this.$store.commit(mutationTypes.REMOVE_BREADCRUMB, toBreadcrumb)
           return
         }
 
@@ -73,7 +76,7 @@
         const toWasStart = startBreadcrumb &&
           startBreadcrumb.id === toBreadcrumb.id
         if (toWasStart) {
-          this.$store.commit(types.CLEAR_BREADCRUMBS, toBreadcrumb)
+          this.$store.commit(mutationTypes.CLEAR_BREADCRUMBS, toBreadcrumb)
           return
         }
 
@@ -86,12 +89,12 @@
         //   _.times(fromIndex, (index) => {
         //     const crumb = this.$store.breadcrumbs[index]
         //     console.log('REMOVING IN ITERATOR:', crumb)
-        //     this.$store.commit(types.REMOVE_BREADCRUMB, crumb)
+        //     this.$store.commit(mutationTypes.REMOVE_BREADCRUMB, crumb)
         //   })
         //   return
         // }
 
-        this.$store.commit(types.ADD_BREADCRUMB, fromBreadcrumb)
+        this.$store.commit(mutationTypes.ADD_BREADCRUMB, fromBreadcrumb)
       })
     },
     components: {
