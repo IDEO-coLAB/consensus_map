@@ -1,17 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import shajs from 'sha.js'
 
 import Home from '../pages/Home'
-import AAA from '../pages/AAA'
-import BBB from '../pages/BBB'
-import CCC from '../pages/CCC'
-
-// import GeographicalIp from './GeographicalIp'
-import NotFoundComponent from './NotFoundComponent'
+import Evolution from '../pages/Evolution'
+import NotFound from '../pages/NotFound'
 
 const routes = [
   {
-    name: 'home',
+    name: 'Home',
     path: '/',
     component: Home,
     meta: {
@@ -19,47 +16,23 @@ const routes = [
     }
   },
   {
-    name: 'aaa',
-    path: '/aaa',
-    component: AAA,
+    name: 'Evolution',
+    path: '/evolution',
+    component: Evolution,
     meta: {
-      title: 'AAA',
+      title: 'Evolution',
       breadcrumb: {
-        id: '234',
-        text: 'AAA: Basic depth aaa'
+        id: shajs('sha256').update(JSON.stringify(Evolution)).digest('hex'),
+        text: 'Evolution: This story shows us how the mechanisms used in network consensus have increased in diversity and speed of development.'
       }
     }
   },
   {
-    name: 'bbb',
-    path: '/bbb',
-    component: BBB,
-    meta: {
-      title: 'BBB',
-      breadcrumb: {
-        id: '345',
-        text: 'BBB: Deeper depth bbb'
-      }
-    }
-  },
-  {
-    name: 'ccc',
-    path: '/ccc',
-    component: CCC,
-    meta: {
-      title: 'CCC',
-      breadcrumb: {
-        id: '456',
-        text: 'CCC: Some other thing ccc'
-      }
-    }
-  },
-  {
-    name: 'notFound',
+    name: 'NotFound',
     path: '*',
-    component: NotFoundComponent,
+    component: NotFound,
     meta: {
-      title: '404 Not Found'
+      title: 'Not Found'
     }
   }
 ]
@@ -73,7 +46,7 @@ const router = new VueRouter({
 
 router.afterEach((to, from) => {
   if (to.meta.title !== undefined) {
-    document.title = `${to.meta.title} - Vue-vuex-starter-kit`
+    document.title = `Cryptoeconomic Agreement - ${to.meta.title}`
   }
 })
 

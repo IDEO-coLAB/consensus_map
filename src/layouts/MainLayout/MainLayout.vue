@@ -1,9 +1,10 @@
 <template>
   <div class="layout">
-    <div class="vue-logo">
+    <!-- <div class="vue-logo">
       <img src="./assets/vue-logo.png" alt="vue">
-    </div>
-    <v-header></v-header>
+    </div> -->
+    <Header></Header>
+
     <div class="vue-views">
       <transition name="fade" mode="out-in">
         <!-- used with preserve component state or avoid re-rendering. -->
@@ -24,11 +25,10 @@
   // import store from '../../store'
   import _ from 'lodash'
 
-  // import VHeader from '@/components/VHeader'
   import { mapState } from 'vuex'
   import * as mutationTypes from '../../store/mutation-types'
   import * as actionTypes from '../../store/action-types'
-  import VHeader from '../../components/VHeader'
+  import Header from '../../components/Header'
 
   export default {
     data() {
@@ -41,6 +41,7 @@
     ]),
     mounted() {
       this.$store.dispatch(actionTypes.LOAD_NETWORKS)
+      this.$store.dispatch(actionTypes.LOAD_CONSENSUS_TYPES)
 
       this.$router.afterEach((to, from) => {
         const prevBreadcrumb = _.head(this.breadcrumbs)
@@ -98,7 +99,7 @@
       })
     },
     components: {
-      VHeader
+      Header
     }
   }
 </script>

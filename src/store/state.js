@@ -1,5 +1,7 @@
 const state = {
-  breadcrumbs: []
+  breadcrumbs: [],
+  networks: [],
+  consensusTypes: []
 }
 
 export default state

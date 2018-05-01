@@ -12,7 +12,7 @@
     "deploy:dev": "cross-env env.DEBUG=app:* env.NODE_ENV=development node ./server/bin/compile",
     "deploy:prod": "cross-env env.DEBUG=app:* env.NODE_ENV=production node ./server/bin/compile",
     "lint": "cross-env env.NODE_ENV=production eslint --ext .js,.vue src",
-    "server": "source ./env && cross-env env.DEBUG=app:* node ./server/bin/www",
+    "server": "cross-env env.DEBUG=app:* node ./server/bin/www",
     "server:prod": "cross-env env.DEBUG=app:* env.NODE_ENV=production node ./server/bin/www"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "debug": "^3.1.0",
     "express": "^4.16.3",
     "lodash": "^4.17.5",
+    "sha.js": "^2.4.11",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.0"

@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div v-show="breadcrumbs.length">
     <hr>
-    BC handler
     <div v-show="start">
       START: You started at => {{start && start.text}}
     </div>
@@ -19,15 +18,9 @@
 
   export default {
     computed: {
-      breadcrumbs() {
-        return this.$store.getters.breadcrumbs
-      },
-      start() {
-        return !_.isEmpty(this.breadcrumbs) && _.last(this.breadcrumbs)
-      },
-      previous() {
-        return !_.isEmpty(this.breadcrumbs) && _.head(this.breadcrumbs)
-      }
+      breadcrumbs() { return this.$store.getters.breadcrumbs },
+      start() { return !_.isEmpty(this.breadcrumbs) && _.last(this.breadcrumbs) },
+      previous() { return !_.isEmpty(this.breadcrumbs) && _.head(this.breadcrumbs) }
     }
   }
 </script>
