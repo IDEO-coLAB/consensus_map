@@ -3,7 +3,7 @@
     <!-- <div class="vue-logo">
       <img src="./assets/vue-logo.png" alt="vue">
     </div> -->
-    <Header></Header>
+    <!-- <Header></Header> -->
 
     <div class="vue-views">
       <transition name="fade" mode="out-in">
