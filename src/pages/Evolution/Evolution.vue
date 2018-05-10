@@ -42,14 +42,16 @@
           <p> European Parliament's
 
             <span
-              @click="toggleDepth"
-              x-topic="something"
+              @click="toggleTopic"
+              x-topic="pos"
               v-bind:class="{ 'tag is-medium': purpose>1 }"
             >
               something here
               <button
+                @click="toggleTopic"
+                x-topic="pos"
                 class="delete is-small"
-                v-if="depth.topics.something"
+                v-if="topics.pos.isExpanded"
               >
               </button>
             </span>
@@ -83,8 +85,8 @@
 
       <div class="column is-one-third">
         <div class="section depth" v-if="purpose>1">
-          <span v-if="!depth.topics.something">Click on something below to learn more</span>
-          <div v-if="depth.topics.something">
+          <span v-if="!hasDepth">Click on something below to learn more</span>
+          <div v-if="hasDepth">
             <h5>Something</h5>
             <p>
               e millions of users and allows those users to interact with their allocated funds. By using novel off-chain technology, the Liquidity.Network solves current payment channel's most pressing problems: user funds are no longer locked up between two users, necessary routing is significantly reduced and payment channels can be REVIVE'ed with our novel REVIVE protocol. The Liquidity.Network therefore add
@@ -135,10 +137,13 @@
     },
     data() {
       return {
-        purpose: 0,
-        depth: {
-          topics: {
-            something: false
+        purpose: 2,
+        topics: {
+          pos: {
+            title: 'Proof of Stake (PoS)',
+            link: 'somelink.com/foo/bar',
+            content: 'e millions of users and allows those users to interact with their allocated funds. By using novel off-chain technology, the Liquidity.Network solves current payment channeled with our novel REVIVE protocol. The Liquidity.Network therefore add',
+            isExpanded: false
           }
         }
       }
@@ -157,17 +162,23 @@
           result[year] = consensusType
         })
         return result
+      },
+      hasDepth() {
+        const foo = _.pickBy(this.topics, (topic) => topic.isExpanded)
+        console.log(foo)
+        return _.keys(foo).length > 0
       }
     },
     methods: {
-      toggleDepth(event) {
+      toggleTopic(event) {
         event.preventDefault()
+        event.stopPropagation()
         const topic = event.target.attributes['x-topic'].value
         if (!topic) {
           return
         }
-        console.log(topic)
-        this.depth.topics[topic] = !this.depth.topics[topic]
+        // console.log(topic)
+        this.topics[topic].isExpanded = !this.topics[topic].isExpanded
       }
     }
   }
