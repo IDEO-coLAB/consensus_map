@@ -41,20 +41,7 @@
           <h2>Highlights and Hypotheses</h2>
           <p> European Parliament's
 
-            <span
-              @click="toggleTopic"
-              x-topic="pos"
-              v-bind:class="{ 'tag is-medium': purpose>1 }"
-            >
-              something here
-              <button
-                @click="toggleTopic"
-                x-topic="pos"
-                class="delete is-small"
-                v-if="topics.pos.isExpanded"
-              >
-              </button>
-            </span>
+            <LearnToggle v-bind:is-visible="purpose>1" v-bind:data="data.pos"></LearnToggle>
 
            Committee on Economic and Monetary Affairs voted overwhelmingly to adopt its virtual currencies and blockchain report this m European Parliament's influential Committee on Economic and Monetary Affairs voted overwhelmingly to adopt its virtual currencies and blockchain report this.</p>
 
@@ -125,7 +112,9 @@
 
 <script>
   import _ from 'lodash'
+  import data from './data'
   import Breadcrumb from '../../components/Breadcrumb'
+  import LearnToggle from '../../components/LearnToggle'
   import addBreadcrumb from '../../directives/addBreadcrumb'
 
   export default {
@@ -133,19 +122,13 @@
       addBreadcrumb
     },
     components: {
-      Breadcrumb
+      Breadcrumb,
+      LearnToggle
     },
     data() {
       return {
-        purpose: 2,
-        topics: {
-          pos: {
-            title: 'Proof of Stake (PoS)',
-            link: 'somelink.com/foo/bar',
-            content: 'e millions of users and allows those users to interact with their allocated funds. By using novel off-chain technology, the Liquidity.Network solves current payment channeled with our novel REVIVE protocol. The Liquidity.Network therefore add',
-            isExpanded: false
-          }
-        }
+        purpose: 0,
+        data
       }
     },
     computed: {
@@ -164,22 +147,11 @@
         return result
       },
       hasDepth() {
-        const foo = _.pickBy(this.topics, (topic) => topic.isExpanded)
-        console.log(foo)
+        const foo = _.pickBy(this.data, (data) => data.isExpanded)
+        console.log('=>', foo)
         return _.keys(foo).length > 0
       }
     },
-    methods: {
-      toggleTopic(event) {
-        event.preventDefault()
-        event.stopPropagation()
-        const topic = event.target.attributes['x-topic'].value
-        if (!topic) {
-          return
-        }
-        // console.log(topic)
-        this.topics[topic].isExpanded = !this.topics[topic].isExpanded
-      }
-    }
+    methods: {}
   }
 </script>
